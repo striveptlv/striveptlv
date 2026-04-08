@@ -3,19 +3,505 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STRIVE Physical Therapy · Las Vegas, NV</title>
+<title>STRIVE Online Banking &amp; Bill Pay Simulator </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
-<!-- ============================================================
-  STRIVE Physical Therapy — Header & Footer Template
-  Main site: https://striveptlv.github.io  (update if URL changes)
-  Usage: Copy the <nav>, mobile-menu <div>, and <footer> blocks
-         into any page. Keep the <style> block and <script> tag.
-  ============================================================ -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Bankig &amp; Bill Pay Simulator</title>
+    <style>
+      :root {
+        --ink: #183153;
+        --muted: #5f6f85;
+        --surface: rgba(255, 255, 255, 0.9);
+        --line: rgba(24, 49, 83, 0.12);
+        --shadow: 0 24px 48px rgba(24, 49, 83, 0.14);
+        --navy: #214a7a;
+        --navy-deep: #163456;
+        --sage: #5d8b6f;
+        --sage-deep: #41614e;
+        --gold: #d2a54b;
+        --gold-deep: #9a7428;
+        --cream: #f6f2e8;
+      }
 
-<style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(33, 74, 122, 0.18), transparent 24%),
+          radial-gradient(circle at top right, rgba(210, 165, 75, 0.18), transparent 20%),
+          radial-gradient(circle at bottom left, rgba(93, 139, 111, 0.16), transparent 24%),
+          linear-gradient(180deg, #fbfcfe 0%, #edf3f8 54%, #e7eef5 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 34px 0 42px;
+      }
+
+      .hero,
+      .card,
+      .footer {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero {
+        padding: 34px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 12px;
+        font-size: clamp(2rem, 5vw, 3.6rem);
+        letter-spacing: -0.04em;
+      }
+
+      .lead {
+        max-width: 760px;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .info-strip {
+        margin-top: 22px;
+        padding: 18px 20px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, rgba(246, 242, 232, 0.95), rgba(255, 255, 255, 0.72));
+        border: 1px solid rgba(210, 165, 75, 0.24);
+      }
+
+      .info-strip p {
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      .launch-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 24px;
+      }
+
+      .card {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .label {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #fff;
+      }
+
+      .label.utility {
+        background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      }
+
+      .label.credit {
+        background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+      }
+
+      .label.bank {
+        background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+      }
+
+      .card h2 {
+        margin: 16px 0 10px;
+        font-size: 1.45rem;
+      }
+
+      .card p {
+        margin-bottom: 22px;
+        line-height: 1.65;
+        color: var(--muted);
+        flex: 1;
+      }
+
+      .launch-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 14px 18px;
+        border-radius: 16px;
+        text-decoration: none;
+        font-weight: 800;
+        color: #fff;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .launch-link:hover {
+        transform: translateY(-1px);
+      }
+
+      .launch-link.utility {
+        background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+        box-shadow: 0 14px 28px rgba(154, 116, 40, 0.22);
+      }
+
+      .launch-link.credit {
+        background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+        box-shadow: 0 14px 28px rgba(22, 52, 86, 0.24);
+      }
+
+      .launch-link.bank {
+        background: linear-gradient(135deg, var(--sage), var(--sage-deep));
+        box-shadow: 0 14px 28px rgba(65, 97, 78, 0.24);
+      }
+
+      .footer {
+        margin-top: 24px;
+        padding: 20px 24px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 900px) {
+        .launch-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page {
+          width: min(100% - 20px, 1120px);
+          padding-top: 20px;
+          padding-bottom: 28px;
+        }
+
+        .hero,
+        .card,
+        .footer {
+          border-radius: 24px;
+        }
+
+        .hero,
+        .card {
+          padding: 22px;
+        }
+      }
+  
+      
+    </style>
+  </head>
+
+<!-- ══════════════════════════════════════════════════
+     NAV
+     All links point to the main STRIVE PT website.
+     Update the base URL below if the domain changes.
+════════════════════════════════════════════════════ -->
+<nav>
+  <a href="https://striveptlv.com" class="nav-logo">
+    <img src="https://striveptlv.com/logo.png" alt="STRIVE PT Logo" class="logo-img">
+    <div>
+      <div class="logo-text">STRIVE</div>
+      <div class="logo-sub">Physical Therapy · Las Vegas</div>
+    </div>
+  </a>
+
+  <div class="nav-links">
+    <a href="https://striveptlv.com/">Home</a>
+    <a href="https://striveptlv.com/#services">Services</a>
+    <a href="https://striveptlv.com/#difference">Why 1-on-1</a>
+    <a href="https://striveptlv.com/#providers">Our Team</a>
+    <a href="https://striveptlv.com/#faq">FAQ</a>
+    <a href="https://striveptlv.com/#contact">Contact</a>
+    <a href="https://striveptlv.com/">Patient Resource</a>
+    <a href="https://striveptlv.com/" class="nav-book">Book Now</a>
+  </div>
+
+  <div class="nav-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://striveptlv.com" onclick="toggleMenu()">Home</a>
+  <a href="https://striveptlv.com/#services" onclick="toggleMenu()">Services</a>
+  <a href="https://striveptlv.com/#difference" onclick="toggleMenu()">Why 1-on-1</a>
+  <a href="https://striveptlv.com/#providers" onclick="toggleMenu()">Our Team</a>
+  <a href="https://striveptlv.com/#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="https://striveptlv.com/#contact" onclick="toggleMenu()">Contact</a>
+  <a href="https://striveptlv.com/moneymanagement" onclick="toggleMenu()">Patient Resources</a>
+  <a href="https://striveptlv.com/#booking" class="mob-book" onclick="toggleMenu()">Book an Appointment</a>
+</div>
+
+<!--BODY-->
+
+
+ <!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Patient Resource &nbsp;·&nbsp; STRIVE Physical Therapy</p>
+  <h1>Home Modification <em>Guide</em></h1>
+  <p class="hero-sub">Practical changes to make your home safer and more accessible after a stroke or spinal cord injury.</p>
+</div>
+ 
+<!-- GREEN BAND -->
+<div class="band">
+  <p>These recommendations are provided as a general educational resource. <strong>Your STRIVE therapist can perform a full home safety evaluation</strong> tailored to your specific diagnosis, home layout, and functional level.</p>
+</div>
+ 
+<!-- PAGE BODY -->
+<div class="page-body">
+ 
+  <!-- BATHROOM -->
+  <div class="room">
+    <div class="room-header">
+      <h2>Bathroom <em>Modifications</em></h2>
+      <span class="room-count">5 recommendations</span>
+    </div>
+    <div class="mod-list">
+ 
+      <div class="mod-item">
+        <div class="mod-num">1</div>
+        <div class="mod-content">
+          <div class="mod-title">Install grab bars at the toilet and shower</div>
+          <div class="mod-desc">Mount securely into wall studs — not just drywall. Place one bar beside the toilet and at least one inside the shower or tub. These are the highest-impact modifications you can make and significantly reduce fall risk during the most vulnerable bathroom transitions.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">2</div>
+        <div class="mod-content">
+          <div class="mod-title">Non-slip mats inside and outside the tub or shower</div>
+          <div class="mod-desc">Place a textured non-slip mat on the floor of the tub or shower, and a second mat on the bathroom floor immediately outside. Wet feet on a smooth surface is one of the most common causes of bathroom falls.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">3</div>
+        <div class="mod-content">
+          <div class="mod-title">Shower chair or tub bench</div>
+          <div class="mod-desc">Allows bathing in a seated position, eliminating the need to stand for extended periods and reducing fall risk. Essential for patients with weakness, fatigue, or balance deficits. Ask your therapist which style — transfer bench, shower chair, or fold-down seat — is best for your setup.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">4</div>
+        <div class="mod-content">
+          <div class="mod-title">Handheld showerhead</div>
+          <div class="mod-desc">Enables bathing from a seated position and allows caregivers to assist more easily. Adjustable-height wall brackets add additional flexibility. An inexpensive and highly effective modification.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">5</div>
+        <div class="mod-content">
+          <div class="mod-title">Raised toilet seat</div>
+          <div class="mod-desc">Reduces the depth of sit-to-stand, which is one of the most physically demanding transfers in daily life. Particularly helpful for patients with hip or knee weakness following neurological injury. Models with armrests provide additional support.</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- BEDROOM -->
+  <div class="room">
+    <div class="room-header">
+      <h2>Bedroom <em>Modifications</em></h2>
+      <span class="room-count">6 recommendations</span>
+    </div>
+    <div class="mod-list">
+ 
+      <div class="mod-item">
+        <div class="mod-num">1</div>
+        <div class="mod-content">
+          <div class="mod-title">Adjust bed height</div>
+          <div class="mod-desc">When seated at the edge of the bed, both feet should rest flat on the floor with hips and knees at roughly 90 degrees. A bed that is too low makes standing significantly harder; too high creates fall risk. Bed risers or a lower frame can adjust height as needed.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">2</div>
+        <div class="mod-content">
+          <div class="mod-title">Bed rail or half-rail</div>
+          <div class="mod-desc">Provides a stable handhold for repositioning in bed, rolling to the edge, and pushing up to sitting — all movements that become effortful after stroke or spinal cord injury. Half-rails attach to the bed frame and do not restrict full movement the way full side rails do.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">3</div>
+        <div class="mod-content">
+          <div class="mod-title">Remove or secure all loose rugs</div>
+          <div class="mod-desc">Loose rugs are one of the leading causes of falls at home. Remove them entirely, or use double-sided non-slip tape and non-slip rug pads to secure all edges firmly to the floor. This applies to all rooms, not just the bedroom.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">4</div>
+        <div class="mod-content">
+          <div class="mod-title">Nightlight or motion-sensor lighting</div>
+          <div class="mod-desc">Nighttime bathroom trips in the dark significantly increase fall risk — especially with impaired balance or sensation. Place nightlights or motion-activated lights along the path from the bed to the bathroom. This simple change has a meaningful impact on nighttime safety.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">5</div>
+        <div class="mod-content">
+          <div class="mod-title">Keep essentials within reach of the bed</div>
+          <div class="mod-desc">Phone, medications, water, and a call device should all be accessible without requiring the patient to stand or reach. A bedside caddy or small table at the right height prevents unnecessary and risky nighttime movements.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">6</div>
+        <div class="mod-content">
+          <div class="mod-title">Clear an unobstructed path to the bathroom</div>
+          <div class="mod-desc">Remove furniture, cords, clothing, and any other objects from the path between the bed and bathroom. If a mobility aid such as a walker or wheelchair is used, ensure there is adequate space to navigate the route safely, especially in the dark.</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- HALLWAYS -->
+  <div class="room">
+    <div class="room-header">
+      <h2>Hallways & <em>Entrances</em></h2>
+      <span class="room-count">5 recommendations</span>
+    </div>
+    <div class="mod-list">
+ 
+      <div class="mod-item">
+        <div class="mod-num">1</div>
+        <div class="mod-content">
+          <div class="mod-title">Improve lighting throughout all hallways</div>
+          <div class="mod-desc">Every hallway and transition area should be well lit. Add motion-sensor lights at the top and bottom of staircases and in hallways traveled at night. Poor lighting is a modifiable risk factor that is frequently overlooked.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">2</div>
+        <div class="mod-content">
+          <div class="mod-title">Install a ramp at any door with a step</div>
+          <div class="mod-desc">Even a single step is a significant barrier for patients using walkers, wheelchairs, or with foot drop. A ramp with a 1:12 slope ratio — one inch of rise for every 12 inches of length — is the standard for safe, manageable access. Portable ramps are available for rentals or temporary use.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">3</div>
+        <div class="mod-content">
+          <div class="mod-title">Handrails on both sides of all staircases</div>
+          <div class="mod-desc">After stroke, patients often have significantly more strength on one side than the other. A single handrail only assists descent or ascent in one direction. Bilateral handrails allow patients to use their stronger side in either direction and provide critical support if balance is lost.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">4</div>
+        <div class="mod-content">
+          <div class="mod-title">Widen doorways if wheelchair access is needed</div>
+          <div class="mod-desc">Standard doorways are often 28–30 inches — too narrow for most wheelchairs, which require at least 32 inches and ideally 36 inches of clear width. Offset hinges can add 2 inches of clearance without structural work. Full widening may require a contractor but is often covered under disability modification programs.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">5</div>
+        <div class="mod-content">
+          <div class="mod-title">Replace round door knobs with lever handles</div>
+          <div class="mod-desc">Lever-style door handles require significantly less grip strength and fine motor control than round knobs — an important consideration for patients with hand weakness or spasticity following stroke or cervical spinal cord injury. This is a low-cost, high-impact change.</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- KITCHEN -->
+  <div class="room">
+    <div class="room-header">
+      <h2>Kitchen <em>Modifications</em></h2>
+      <span class="room-count">4 recommendations</span>
+    </div>
+    <div class="mod-list">
+ 
+      <div class="mod-item">
+        <div class="mod-num">1</div>
+        <div class="mod-content">
+          <div class="mod-title">Store frequently used items at counter height</div>
+          <div class="mod-desc">Reaching overhead while standing is one of the more destabilizing movements in daily life, particularly for patients with balance impairments. Reorganize so that everyday dishes, glasses, food, and appliances are stored between waist and shoulder height — no reaching up or bending low required.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">2</div>
+        <div class="mod-content">
+          <div class="mod-title">Add pull-out shelves or a lazy Susan to lower cabinets</div>
+          <div class="mod-desc">Deep lower cabinets require awkward bending and reaching that challenges balance. Pull-out shelves bring items to the front; a lazy Susan allows rotation so nothing is stored out of easy reach. Both are inexpensive modifications available at most hardware stores.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">3</div>
+        <div class="mod-content">
+          <div class="mod-title">Replace faucets and cabinet hardware with lever styles</div>
+          <div class="mod-desc">Lever-style faucets require only a downward push rather than a grip-and-twist motion. Loop or D-ring cabinet pulls are easier than standard knobs for patients with limited hand strength or coordination. These changes are particularly helpful for patients with hemiplegia or cervical SCI.</div>
+        </div>
+      </div>
+ 
+      <div class="mod-item">
+        <div class="mod-num">4</div>
+        <div class="mod-content">
+          <div class="mod-title">Place a non-slip mat in front of the sink</div>
+          <div class="mod-desc">Standing at the sink for tasks like washing dishes or brushing teeth can be fatiguing and destabilizing. A non-slip mat provides both traction underfoot and a tactile cue about position — helpful for patients with proprioceptive deficits following neurological injury.</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- NOTE -->
+  <div class="note">
+    <p><strong>A note from STRIVE Physical Therapy —</strong> This guide covers the most common and impactful home modifications for stroke and spinal cord injury recovery. Every patient's home and functional level is different. Our therapists provide individualized home safety evaluations as part of our in-home PT services throughout the Las Vegas valley — including Skye Canyon, Centennial Hills, and Summerlin. <a href="https://www.striveptlv.com/#contact" style="color: var(--green); text-decoration: none; font-weight: 500;">Contact us</a> to learn more.</p>
+  </div>
+ 
+</div><!-- /page-body -->
+ 
+<div class="divider"></div> 
+
+ <!--END BODY--> 
+
+
+  
   /* ── RESET & BASE ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -27,7 +513,7 @@
     /* Push body content below fixed nav */
     padding-top: 70px;
   }
-
+ 
   /* ── DESIGN TOKENS ── */
   :root {
     --forest:      #0d2118;
@@ -41,11 +527,11 @@
     --text-mid:    #2e5040;
     --text-light:  #5a7a68;
   }
-
+ 
   /* ══════════════════════════════════════
      NAV
   ══════════════════════════════════════ */
-nav {
+  nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     background: rgba(13,33,24,0.97);
     backdrop-filter: blur(12px);
@@ -59,14 +545,34 @@ nav {
     display: flex; align-items: center; gap: 11px;
     text-decoration: none;
   }
-  .logo-mark {
-    width: 40px; height: 40px;
-    background: var(--green);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 600; color: white; flex-shrink: 0;
+  ./* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(13,33,24,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(30,138,74,0.25);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 70px;
   }
+  .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+  .logo-img {
+  width: 50px; height: 50px;
+  object-fit: contain; flex-shrink: 0;
+}
+.logo-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: white; line-height: 1.1; letter-spacing: 2px; }
+.logo-sub { font-size: 9.5px; font-family: 'DM Sans', sans-serif; color: var(--green-light); font-weight: 300; letter-spacing: 2.5px; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 13.5px; letter-spacing: 0.3px; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green-light); }
+.nav-book { background: var(--green) !important; color: white !important; padding: 9px 22px; border-radius: 2px; font-weight: 500 !important; transition: background 0.2s !important; }
+.nav-book:hover { background: var(--green-light) !important; }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.nav-toggle span { width: 22px; height: 2px; background: white; border-radius: 2px; }
+  /* MOBILE MENU */
+  .mobile-menu { display: none; flex-direction: column; position: fixed; top: 70px; left: 0; right: 0; bottom: 0; background: var(--forest); z-index: 199; padding: 32px 6vw; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 300; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mob-book { background: var(--green); color: white !important; text-align: center; border-radius: 2px; padding: 15px !important; margin-top: 24px; border: none !important; font-size: 16px; }
+
   .logo-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px; font-weight: 600; color: white;
@@ -107,36 +613,7 @@ nav {
     background: white; border-radius: 2px;
     transition: 0.3s;
   }
-  /* Desktop links */
-  .nav-links {
-    display: flex; align-items: center; gap: 26px;
-  }
-  .nav-links a {
-    color: rgba(255,255,255,0.72); text-decoration: none;
-    font-size: 13.5px; letter-spacing: 0.3px;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--green-light); }
-  .nav-book {
-    background: var(--green) !important;
-    color: white !important;
-    padding: 9px 22px; border-radius: 2px;
-    font-weight: 500 !important;
-    transition: background 0.2s !important;
-  }
-  .nav-book:hover { background: var(--green-light) !important; }
-
-  /* Hamburger */
-  .nav-toggle {
-    display: none; flex-direction: column;
-    gap: 5px; cursor: pointer;
-  }
-  .nav-toggle span {
-    width: 22px; height: 2px;
-    background: white; border-radius: 2px;
-    transition: 0.3s;
-  }
-
+ 
   /* ══════════════════════════════════════
      MOBILE MENU
   ══════════════════════════════════════ */
@@ -160,16 +637,16 @@ nav {
     padding: 15px !important; margin-top: 24px;
     border: none !important; font-size: 16px;
   }
-
+ 
   /* ══════════════════════════════════════
      PAGE CONTENT AREA (demo only)
   ══════════════════════════════════════ */
   .page-content {
     min-height: 60vh;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: left; justify-content: left;
     flex-direction: column; gap: 20px;
     padding: 80px 5vw;
-    text-align: center;
+    text-align: left;
   }
   .page-content h2 {
     font-family: 'Cormorant Garamond', serif;
@@ -189,7 +666,7 @@ nav {
     font-size: 13px; padding: 4px 10px; border-radius: 2px;
     font-family: monospace; margin-top: 4px;
   }
-
+ 
   /* ══════════════════════════════════════
      FOOTER
   ══════════════════════════════════════ */
@@ -199,7 +676,7 @@ nav {
     border-top: 1px solid rgba(255,255,255,0.05);
   }
   .footer-inner { max-width: 1200px; margin: 0 auto; }
-
+ 
   .footer-top {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -207,13 +684,13 @@ nav {
     padding-bottom: 48px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-
+ 
   .footer-brand p {
     color: rgba(255,255,255,0.36);
     font-size: 13.5px; line-height: 1.8;
     margin-top: 16px; max-width: 260px;
   }
-
+ 
   .footer-col h4 {
     color: rgba(255,255,255,0.88);
     font-size: 11px; letter-spacing: 2px;
@@ -226,14 +703,14 @@ nav {
     margin-bottom: 10px; transition: color 0.2s;
   }
   .footer-col a:hover { color: var(--green-light); }
-
+ 
   .footer-bottom {
     padding-top: 26px;
     display: flex; justify-content: space-between;
     align-items: center; flex-wrap: wrap; gap: 10px;
     color: rgba(255,255,255,0.2); font-size: 12px;
   }
-
+ 
   /* ══════════════════════════════════════
      RESPONSIVE
   ══════════════════════════════════════ */
@@ -246,16 +723,22 @@ nav {
     .footer-top { grid-template-columns: 1fr; }
     .page-content { padding: 60px 5vw; }
   }
+}
 </style>
 </head>
 <body>
-
+</div>
+  
+ 
 <!-- ══════════════════════════════════════════════════
-     NAV
-     All links point to the main STRIVE PT website.
-     Update the base URL below if the domain changes.
+     FOOTER
 ════════════════════════════════════════════════════ -->
-<nav>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+ 
+      <!-- Brand -->
+     <div class="footer-brand">
   <a href="https://striveptlv.com" class="nav-logo">
     <img src="https://striveptlv.com/logo.png" alt="STRIVE PT Logo" class="logo-img">
     <div>
@@ -263,108 +746,40 @@ nav {
       <div class="logo-sub">Physical Therapy · Las Vegas</div>
     </div>
   </a>
-
-  <div class="nav-links">
-    <a href="https://striveptlv.github.io/">Home</a>
-    <a href="https://striveptlv.github.io/#services">Services</a>
-    <a href="https://striveptlv.github.io/#difference">Why 1-on-1</a>
-    <a href="https://striveptlv.github.io/#providers">Our Team</a>
-    <a href="https://striveptlv.github.io/#faq">FAQ</a>
-    <a href="https://striveptlv.github.io/#contact">Contact</a>
-    <a href="https://striveptlv.github.io/moneymanagement/" target="_blank" rel="noopener">Patient Resource</a>
-    <a href="https://striveptlv.github.io/#booking" class="nav-book">Book Now</a>
-  </div>
-
-  <div class="nav-toggle" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="https://striveptlv.com"    onclick="toggleMenu()">Home</a>
-  <a href="https://striveptlv.github.io/#services"    onclick="toggleMenu()">Services</a>
-  <a href="https://striveptlv.github.io/#difference"  onclick="toggleMenu()">Why 1-on-1</a>
-  <a href="https://striveptlv.github.io/#providers"   onclick="toggleMenu()">Our Team</a>
-  <a href="https://striveptlv.github.io/#faq"         onclick="toggleMenu()">FAQ</a>
-  <a href="https://striveptlv.github.io/#contact"     onclick="toggleMenu()">Contact</a>
-  <a href="https://striveptlv.github.io/moneymanagement/" target="_blank" rel="noopener" onclick="toggleMenu()">Patient Resource</a>
-  <a href="https://striveptlv.github.io/#booking" class="mob-book" onclick="toggleMenu()">Book an Appointment</a>
+  <p>Stroke &amp; balance physical therapy delivered 1-on-1 in your Las Vegas home. Servicing Las Vegas in May 2026.</p>
 </div>
-
-
-<!-- ══════════════════════════════════════════════════
-     YOUR PAGE CONTENT GOES HERE
-     Delete the .page-content block below and replace
-     with your actual page HTML.
-════════════════════════════════════════════════════ -->
-<div class="page-content">
-  <h2>Your Page Content <em>Goes Here</em></h2>
-  <p>Replace this placeholder with your page's content. The header and footer above and below will stay consistent across all pages.</p>
-  <code>&lt;!-- delete this .page-content block --&gt;</code>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════ -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-
-      <!-- Brand -->
-      <div class="footer-brand">
-        <a href="https://striveptlv.github.io" class="nav-logo">
-          <div class="logo-mark">S</div>
-          <div class="logo-text" style="color:white;">
-            STRIVE
-            <div class="logo-sub">Physical Therapy · Las Vegas</div>
-          </div>
-        </a>
-        <p>Stroke &amp; vestibular physical therapy delivered 1-on-1 in your Las Vegas home. Serving the entire valley with dedicated, certified care.</p>
-      </div>
-
-      <!-- Services -->
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="https://striveptlv.github.io/#services">Neurological Rehab</a>
-        <a href="https://striveptlv.github.io/#services">Vestibular Therapy</a>
-        <a href="https://striveptlv.github.io/#services">Balance &amp; Fall Prevention</a>
-        <a href="https://striveptlv.github.io/#services">Concussion Rehab</a>
-        <a href="https://striveptlv.github.io/#services">Home Safety Assessment</a>
-      </div>
 
       <!-- Practice -->
       <div class="footer-col">
         <h4>Practice</h4>
-        <a href="https://striveptlv.github.io/#difference">Why 1-on-1 PT</a>
-        <a href="https://striveptlv.github.io/#providers">Our Team</a>
-        <a href="https://striveptlv.github.io/#pricing">Payment Options</a>
-        <a href="https://striveptlv.github.io/#faq">FAQ</a>
-        <a href="https://striveptlv.github.io/#contact">Medicare Waitlist</a>
-        <a href="https://striveptlv.github.io/moneymanagement/" target="_blank" rel="noopener">Money Management</a>
+        <a href="https://striveptlv.com/#difference">Why 1-on-1 PT</a>
+        <a href="https://striveptlv.com/#providers">Our Team</a>
+        <a href="https://striveptlv.com/#pricing">Payment Options</a>
+        <a href="https://striveptlv.com/#faq">FAQ</a>
+        <a href="https://striveptlv.com/#contact">Medicare Waitlist</a>
+        <a href="https://striveptlv.com/moneymanagement/" target="_blank" rel="noopener">Patient Tools</a>
       </div>
-
+ 
       <!-- Las Vegas -->
       <div class="footer-col">
         <h4>Las Vegas</h4>
-        <a href="https://striveptlv.github.io/#booking">Book via JaneApp</a>
-        <a href="https://striveptlv.github.io/#contact">Contact Us</a>
-        <a href="https://striveptlv.github.io/#contact">Henderson</a>
-        <a href="https://striveptlv.github.io/#contact">Summerlin</a>
-        <a href="https://striveptlv.github.io/#contact">North Las Vegas</a>
+        <a href="https://striveptlv.com/#booking">Book via JaneApp</a>
+        <a href="https://striveptlv.com/#contact">Contact Us</a>
+        <a href="https://striveptlv.com/#contact">Skye Canyon / Centennial Hills</a>
+        <a href="https://striveptlv.com/#contact">Summerlin</a>
+        <a href="https://striveptlv.com/#contact">Spring Valley</a>
       </div>
-
+ 
     </div>
-
+ 
     <div class="footer-bottom">
-      <span>&copy; 2025 STRIVE Physical Therapy &middot; Las Vegas, NV &middot; All rights reserved.</span>
+      <span>&copy; 2026 STRIVE Physical Therapy &middot; Las Vegas, NV &middot; All rights reserved.</span>
       <span>Licensed Physical Therapists &middot; State of Nevada</span>
     </div>
   </div>
 </footer>
-
-
+ 
+ 
 <script>
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
