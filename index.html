@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HOME MODIFICATIONS RECOMMENDATIONS · STRIVE Physical Therapy · Las Vegas, NV</title>
-  <meta name="description" content="PAGE DESCRIPTION">
+  <title>Home Modifications Guide · STRIVE Physical Therapy · Las Vegas, NV</title>
+  <meta name="description" content="Practical home modification recommendations for stroke and spinal cord injury recovery from STRIVE Physical Therapy Las Vegas.">
 
-  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 
-  <!-- FAVICON -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon-192x192.png" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <style>
-    /* ─── DESIGN TOKENS ─────────────────────────────────── */
+    /* ── DESIGN TOKENS ── */
     :root {
       --forest:      #0d2118;
       --forest-mid:  #133022;
@@ -39,9 +37,10 @@
       background: var(--warm-white);
       color: var(--text-dark);
       overflow-x: hidden;
+      padding-top: 70px;
     }
 
-    /* ─── NAV ────────────────────────────────────────────── */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       background: rgba(13,33,24,0.97);
@@ -88,12 +87,39 @@
     }
     .nav-toggle span { width: 22px; height: 2px; background: white; border-radius: 2px; }
 
-    /* ─── MOBILE MENU ────────────────────────────────────── */
+    /* ── PATIENT RESOURCE DROPDOWN ── */
+    .nav-dropdown { position: relative; display: flex; align-items: center; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; padding: 24px 0; }
+    .nav-dropdown > a::after {
+      content: ''; display: inline-block; width: 0; height: 0;
+      border-left: 4px solid transparent; border-right: 4px solid transparent;
+      border-top: 5px solid rgba(255,255,255,0.55); transition: transform 0.2s;
+    }
+    .nav-dropdown:hover > a { color: var(--green-light); }
+    .nav-dropdown:hover > a::after { transform: rotate(180deg); border-top-color: var(--green-light); }
+    .dropdown-menu {
+      opacity: 0; pointer-events: none;
+      position: absolute; top: 100%; right: 0;
+      background: var(--forest-mid);
+      border: 1px solid rgba(30,138,74,0.25);
+      border-radius: 4px; min-width: 190px; overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35); transition: opacity 0.15s;
+    }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: auto; }
+    .dropdown-menu a {
+      display: block; color: rgba(255,255,255,0.72); font-size: 13.5px;
+      padding: 11px 18px; border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s, color 0.15s; white-space: nowrap;
+    }
+    .dropdown-menu a:last-child { border-bottom: none; }
+    .dropdown-menu a:hover { background: rgba(30,138,74,0.15); color: var(--green-light); }
+
+    /* ── MOBILE MENU ── */
     .mobile-menu {
       display: none; flex-direction: column;
       position: fixed; top: 70px; left: 0; right: 0; bottom: 0;
       background: var(--forest); z-index: 199;
-      padding: 32px 6vw;
+      padding: 32px 6vw; overflow-y: auto;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
@@ -116,15 +142,11 @@
       padding: 16px 0; cursor: pointer;
     }
     .mob-arrow {
-      font-size: 22px; line-height: 1;
-      color: var(--green-light);
-      transition: transform 0.25s;
-      display: inline-block;
+      font-size: 22px; color: var(--green-light);
+      display: inline-block; transition: transform 0.25s;
     }
     .mob-arrow.open { transform: rotate(90deg); }
-    .mob-dropdown-items {
-      display: none; flex-direction: column; padding-left: 16px;
-    }
+    .mob-dropdown-items { display: none; flex-direction: column; padding-left: 16px; }
     .mob-dropdown-items.open { display: flex; }
     .mob-dropdown-items a {
       font-size: 15px !important; padding: 12px 0 !important;
@@ -133,14 +155,120 @@
     }
     .mob-dropdown-items a:last-child { border-bottom: none !important; }
 
-    /* ─── PAGE CONTENT AREA ──────────────────────────────── */
-    /* Offset for fixed nav — apply to first section/element */
+    /* ── PAGE CONTENT ── */
     .page-content {
-      padding-top: 70px;
-      min-height: calc(100vh - 70px - 200px); /* fills space between nav and footer */
+      min-height: calc(100vh - 70px - 300px);
     }
 
-    /* ─── FOOTER ─────────────────────────────────────────── */
+    /* ── HERO ── */
+    .hero {
+      background: var(--forest);
+      padding: 72px 5vw 80px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 400; color: white;
+      line-height: 1.14; max-width: 580px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 em {
+      font-style: italic; color: rgba(255,255,255,0.5);
+    }
+    .hero-sub {
+      font-size: 16px; color: rgba(255,255,255,0.45);
+      font-weight: 300; max-width: 500px;
+      margin: 0 auto; line-height: 1.75;
+    }
+
+    /* ── GREEN BAND ── */
+    .band {
+      background: var(--green);
+      padding: 24px 5vw;
+      text-align: center;
+    }
+    .band p {
+      font-size: 14px; color: rgba(255,255,255,0.78);
+      font-weight: 300; max-width: 680px;
+      margin: 0 auto; line-height: 1.7;
+    }
+    .band p strong { color: white; font-weight: 600; }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 5vw 96px;
+    }
+
+    /* ── ROOM SECTION ── */
+    .room { margin-bottom: 64px; }
+    .room:last-of-type { margin-bottom: 0; }
+
+    .room-header {
+      display: flex; align-items: baseline; gap: 18px;
+      margin-bottom: 24px; padding-bottom: 14px;
+      border-bottom: 1px solid #d4e2da;
+    }
+    .room-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 400; color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .room-header h2 em { font-style: italic; color: var(--text-mid); }
+    .room-count {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-light); white-space: nowrap;
+    }
+
+    /* ── MOD ITEMS ── */
+    .mod-list { display: flex; flex-direction: column; gap: 1px; }
+    .mod-item {
+      display: grid; grid-template-columns: 28px 1fr;
+      gap: 16px; align-items: start;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0f4f1;
+    }
+    .mod-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .mod-item:first-child { padding-top: 0; }
+
+    .mod-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--green-pale); color: var(--green);
+      font-size: 12px; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .mod-title {
+      font-size: 15px; font-weight: 600;
+      color: var(--text-dark); margin-bottom: 4px; line-height: 1.3;
+    }
+    .mod-desc {
+      font-size: 13.5px; color: var(--text-mid);
+      line-height: 1.6; font-weight: 300;
+    }
+
+    /* ── NOTE BLOCK ── */
+    .note {
+      background: #f7faf8;
+      border-left: 3px solid var(--green);
+      padding: 18px 22px; margin-top: 56px;
+    }
+    .note p {
+      font-size: 13.5px; color: var(--text-mid);
+      line-height: 1.7; font-weight: 300;
+    }
+    .note p strong { color: var(--text-dark); font-weight: 600; }
+    .note a { color: var(--green); text-decoration: none; font-weight: 500; }
+
+    /* ── FOOTER ── */
     footer {
       background: var(--forest);
       padding: 64px 5vw 28px;
@@ -176,52 +304,24 @@
       gap: 10px; color: rgba(255,255,255,0.2); font-size: 12px;
     }
 
-    /* ─── PATIENT RESOURCE DROPDOWN ─────────────────────── */
-    .nav-dropdown { position: relative; display: flex; align-items: center; }
-    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; padding: 24px 0; }
-    .nav-dropdown > a::after {
-      content: ''; display: inline-block; width: 0; height: 0;
-      border-left: 4px solid transparent; border-right: 4px solid transparent;
-      border-top: 5px solid rgba(255,255,255,0.55); transition: transform 0.2s;
-    }
-    .nav-dropdown:hover > a { color: var(--green-light); }
-    .nav-dropdown:hover > a::after { transform: rotate(180deg); border-top-color: var(--green-light); }
-    .dropdown-menu {
-      opacity: 0; pointer-events: none;
-      position: absolute; top: 100%; right: 0;
-      background: var(--forest-mid);
-      border: 1px solid rgba(30,138,74,0.25);
-      border-radius: 4px; min-width: 190px; overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.35); transition: opacity 0.15s;
-    }
-    .nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: auto; }
-    .dropdown-menu a {
-      display: block; color: rgba(255,255,255,0.72); font-size: 13.5px;
-      padding: 11px 18px; border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: background 0.15s, color 0.15s; white-space: nowrap;
-    }
-    .dropdown-menu a:last-child { border-bottom: none; }
-    .dropdown-menu a:hover { background: rgba(30,138,74,0.15); color: var(--green-light); }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
-      .nav-links  { display: none; }
+      .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
     @media (max-width: 600px) {
       .footer-top { grid-template-columns: 1fr; }
+      .hero { padding: 56px 6vw 64px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════
-     NAV
-═══════════════════════════════════════════════════════ -->
+<!-- ── NAV ── -->
 <nav>
-  <a href="/" class="nav-logo">
-    <img src="/logo.png" alt="STRIVE PT Logo" class="logo-img">
+  <a href="https://striveptlv.com" class="nav-logo">
+    <img src="https://striveptlv.com/logo.png" alt="STRIVE PT Logo" class="logo-img">
     <div>
       <div class="logo-text">STRIVE</div>
       <div class="logo-sub">Physical Therapy · Las Vegas</div>
@@ -238,8 +338,8 @@
     <div class="nav-dropdown">
       <a href="#">Patient Resource</a>
       <div class="dropdown-menu">
-        <a href="https://striveptlv.com/moneymanagement/">Money Management</a>
-        <a href="https://striveptlv.com/localresources/">Local Resources</a>
+        <a href="https://striveptlv.com/moneymanagement/">Online Bank Simulator</a>
+        <a href="https://striveptlv.com/patient-resource/">Home Modifications</a>
       </div>
     </div>
     <a href="https://striveptlv.com/#booking" class="nav-book">Book Now</a>
@@ -250,9 +350,7 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════════
-     MOBILE MENU
-═══════════════════════════════════════════════════════ -->
+<!-- ── MOBILE MENU ── -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="https://striveptlv.com/" onclick="toggleMenu()">Home</a>
   <a href="https://striveptlv.com/#services" onclick="toggleMenu()">Services</a>
@@ -262,630 +360,237 @@
   <a href="https://striveptlv.com/#contact" onclick="toggleMenu()">Contact</a>
   <div class="mob-dropdown">
     <div class="mob-dropdown-toggle" onclick="togglePatientResource()">
-      Patient Resource
-      <span class="mob-arrow">&#8250;</span>
+      Patient Resource <span class="mob-arrow">›</span>
     </div>
     <div class="mob-dropdown-items" id="patientResourceItems">
-      <a href="https://striveptlv.com/moneymanagement/" onclick="toggleMenu()">Money Management</a>
-      <a href="https://striveptlv.com/localresources/" onclick="toggleMenu()">Local Resources</a>
+      <a href="https://striveptlv.com/moneymanagement/" onclick="toggleMenu()">Online Bank Simulator</a>
+      <a href="https://striveptlv.com/patient-resource/" onclick="toggleMenu()">Home Modifications</a>
     </div>
   </div>
   <a href="https://striveptlv.com/#booking" class="mob-book" onclick="toggleMenu()">Book an Appointment</a>
 </div>
+
+<!-- ── PAGE CONTENT ── -->
 <main class="page-content">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Modification Guide | STRIVE Physical Therapy · Las Vegas</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-
-  :root {
-    --dark:       #0e1712;
-    --dark-card:  #141f17;
-    --dark-line:  #1e2d22;
-    --green:      #1E432D;
-    --green-mid:  #2a5c3c;
-    --green-light:#3a7a52;
-    --green-pale: #eef5f0;
-    --white:      #ffffff;
-    --off-white:  #f7faf8;
-    --text-hero:  rgba(255,255,255,0.88);
-    --text-dim:   rgba(255,255,255,0.45);
-    --text-body:  #1c2a22;
-    --text-mid:   #4d6458;
-    --text-light: #8aaa96;
-    --border:     #d4e2da;
-    --border-dark:#1e2d22;
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--white);
-    color: var(--text-body);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    background: var(--dark);
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    border-bottom: 1px solid var(--border-dark);
-  }
-
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    text-decoration: none;
-  }
-
-  .brand-box {
-    width: 34px;
-    height: 34px;
-    background: var(--green);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .brand-box span {
-    font-family: 'Lora', serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    letter-spacing: -0.3px;
-  }
-
-  .brand-text strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-  .brand-text small {
-    display: block;
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.03em;
-    font-weight: 300;
-  }
-
-  .nav-link {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-dim);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.15s;
-  }
-  .nav-link:hover { color: white; }
-
-  /* ─── HERO ─── */
-  .hero {
-    background: var(--dark);
-    padding: 80px 40px 88px;
-    text-align: center;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 22px;
-  }
-
-  .hero h1 {
-    font-family: 'Lora', serif;
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 500;
-    color: var(--white);
-    line-height: 1.14;
-    max-width: 640px;
-    margin: 0 auto 20px;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: rgba(255,255,255,0.58);
-  }
-
-  .hero-sub {
-    font-size: 16px;
-    color: var(--text-dim);
-    font-weight: 300;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.75;
-  }
-
-  /* ─── GREEN BAND ─── */
-  .band {
-    background: var(--green);
-    padding: 24px 40px;
-    text-align: center;
-  }
-  .band p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.78);
-    font-weight: 300;
-    max-width: 640px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-  .band p strong {
-    color: white;
-    font-weight: 600;
-  }
-
-  /* ─── PAGE BODY ─── */
-  .page-body {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 72px 40px 96px;
-  }
-
-  /* ─── ROOM SECTION ─── */
-  .room {
-    margin-bottom: 64px;
-  }
-  .room:last-child {
-    margin-bottom: 0;
-  }
-
-  .room-header {
-    display: flex;
-    align-items: baseline;
-    gap: 18px;
-    margin-bottom: 24px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .room-header h2 {
-    font-family: 'Lora', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--text-body);
-    line-height: 1.2;
-  }
-
-  .room-header h2 em {
-    font-style: italic;
-    color: var(--text-mid);
-  }
-
-  .room-count {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    white-space: nowrap;
-  }
-
-  /* ─── MOD ITEMS ─── */
-  .mod-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-
-  .mod-item {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 16px;
-    align-items: start;
-    padding: 16px 0;
-    border-bottom: 1px solid #f0f4f1;
-  }
-  .mod-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-  .mod-item:first-child {
-    padding-top: 0;
-  }
-
-  .mod-num {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--green-pale);
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .mod-content {}
-
-  .mod-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-body);
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-
-  .mod-desc {
-    font-size: 13.5px;
-    color: var(--text-mid);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* ─── NOTE BLOCK ─── */
-  .note {
-    background: var(--off-white);
-    border-left: 3px solid var(--green);
-    border-radius: 0 6px 6px 0;
-    padding: 18px 22px;
-    margin-top: 48px;
-  }
-  .note p {
-    font-size: 13.5px;
-    color: var(--text-mid);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-  .note p strong {
-    color: var(--text-body);
-    font-weight: 600;
-  }
-
-  /* ─── DIVIDER ─── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 40px;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--dark);
-    padding: 48px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-  .footer-brand {}
-  .footer-brand .fb-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
-  .footer-brand p {
-    font-size: 13px;
-    color: var(--text-dim);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 280px;
-  }
-
-  .footer-links {}
-  .footer-links h4 {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 14px;
-  }
-  .footer-links ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .footer-links ul li a {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    font-weight: 300;
-    transition: color 0.15s;
-  }
-  .footer-links ul li a:hover { color: white; }
-
-  .footer-bottom {
-    background: var(--dark);
-    border-top: 1px solid var(--border-dark);
-    padding: 18px 40px;
-    text-align: center;
-  }
-  .footer-bottom p {
-    font-size: 12px;
-    color: var(--text-dim);
-    font-weight: 300;
-  }
-
-  @media (max-width: 640px) {
-    nav { padding: 0 20px; }
-    .hero { padding: 60px 24px 68px; }
-    .band { padding: 22px 24px; }
-    .page-body { padding: 52px 24px 72px; }
-    footer { grid-template-columns: 1fr; padding: 40px 24px; gap: 32px; }
-    .footer-bottom { padding: 18px 24px; }
-    .divider { margin: 0 24px; }
-  }
-
-</style>
-</head>
-<body>
-<!-- HERO -->
-<div class="hero">
-  <p class="hero-eyebrow">Patient Resource &nbsp;·&nbsp; STRIVE Physical Therapy</p>
-  <h1>Home Modification <em>Guide</em></h1>
-  <p class="hero-sub">Practical changes to make your home safer and more accessible after a stroke or spinal cord injury.</p>
-</div>
-
-<!-- GREEN BAND -->
-<div class="band">
-  <p>These recommendations are provided as a general educational resource. <strong>Your STRIVE therapist can perform a full home safety evaluation</strong> tailored to your specific diagnosis, home layout, and functional level.</p>
-</div>
-
-<!-- PAGE BODY -->
-<div class="page-body">
-
-  <!-- BATHROOM -->
-  <div class="room">
-    <div class="room-header">
-      <h2>Bathroom <em>Modifications</em></h2>
-      <span class="room-count">5 recommendations</span>
-    </div>
-    <div class="mod-list">
-
-      <div class="mod-item">
-        <div class="mod-num">1</div>
-        <div class="mod-content">
-          <div class="mod-title">Install grab bars at the toilet and shower</div>
-          <div class="mod-desc">Mount securely into wall studs — not just drywall. Place one bar beside the toilet and at least one inside the shower or tub. These are the highest-impact modifications you can make and significantly reduce fall risk during the most vulnerable bathroom transitions.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">2</div>
-        <div class="mod-content">
-          <div class="mod-title">Non-slip mats inside and outside the tub or shower</div>
-          <div class="mod-desc">Place a textured non-slip mat on the floor of the tub or shower, and a second mat on the bathroom floor immediately outside. Wet feet on a smooth surface is one of the most common causes of bathroom falls.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">3</div>
-        <div class="mod-content">
-          <div class="mod-title">Shower chair or tub bench</div>
-          <div class="mod-desc">Allows bathing in a seated position, eliminating the need to stand for extended periods and reducing fall risk. Essential for patients with weakness, fatigue, or balance deficits. Ask your therapist which style — transfer bench, shower chair, or fold-down seat — is best for your setup.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">4</div>
-        <div class="mod-content">
-          <div class="mod-title">Handheld showerhead</div>
-          <div class="mod-desc">Enables bathing from a seated position and allows caregivers to assist more easily. Adjustable-height wall brackets add additional flexibility. An inexpensive and highly effective modification.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">5</div>
-        <div class="mod-content">
-          <div class="mod-title">Raised toilet seat</div>
-          <div class="mod-desc">Reduces the depth of sit-to-stand, which is one of the most physically demanding transfers in daily life. Particularly helpful for patients with hip or knee weakness following neurological injury. Models with armrests provide additional support.</div>
-        </div>
-      </div>
-
-    </div>
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">Patient Resource &nbsp;·&nbsp; STRIVE Physical Therapy</p>
+    <h1>Home Modification <em>Guide</em></h1>
+    <p class="hero-sub">Practical changes to make your home safer and more accessible after a stroke or spinal cord injury.</p>
   </div>
 
-  <!-- BEDROOM -->
-  <div class="room">
-    <div class="room-header">
-      <h2>Bedroom <em>Modifications</em></h2>
-      <span class="room-count">6 recommendations</span>
-    </div>
-    <div class="mod-list">
-
-      <div class="mod-item">
-        <div class="mod-num">1</div>
-        <div class="mod-content">
-          <div class="mod-title">Adjust bed height</div>
-          <div class="mod-desc">When seated at the edge of the bed, both feet should rest flat on the floor with hips and knees at roughly 90 degrees. A bed that is too low makes standing significantly harder; too high creates fall risk. Bed risers or a lower frame can adjust height as needed.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">2</div>
-        <div class="mod-content">
-          <div class="mod-title">Bed rail or half-rail</div>
-          <div class="mod-desc">Provides a stable handhold for repositioning in bed, rolling to the edge, and pushing up to sitting — all movements that become effortful after stroke or spinal cord injury. Half-rails attach to the bed frame and do not restrict full movement the way full side rails do.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">3</div>
-        <div class="mod-content">
-          <div class="mod-title">Remove or secure all loose rugs</div>
-          <div class="mod-desc">Loose rugs are one of the leading causes of falls at home. Remove them entirely, or use double-sided non-slip tape and non-slip rug pads to secure all edges firmly to the floor. This applies to all rooms, not just the bedroom.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">4</div>
-        <div class="mod-content">
-          <div class="mod-title">Nightlight or motion-sensor lighting</div>
-          <div class="mod-desc">Nighttime bathroom trips in the dark significantly increase fall risk — especially with impaired balance or sensation. Place nightlights or motion-activated lights along the path from the bed to the bathroom. This simple change has a meaningful impact on nighttime safety.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">5</div>
-        <div class="mod-content">
-          <div class="mod-title">Keep essentials within reach of the bed</div>
-          <div class="mod-desc">Phone, medications, water, and a call device should all be accessible without requiring the patient to stand or reach. A bedside caddy or small table at the right height prevents unnecessary and risky nighttime movements.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">6</div>
-        <div class="mod-content">
-          <div class="mod-title">Clear an unobstructed path to the bathroom</div>
-          <div class="mod-desc">Remove furniture, cords, clothing, and any other objects from the path between the bed and bathroom. If a mobility aid such as a walker or wheelchair is used, ensure there is adequate space to navigate the route safely, especially in the dark.</div>
-        </div>
-      </div>
-
-    </div>
+  <!-- GREEN BAND -->
+  <div class="band">
+    <p>These recommendations are provided as a general educational resource. <strong>Your STRIVE therapist can perform a full home safety evaluation</strong> tailored to your specific diagnosis, home layout, and functional level.</p>
   </div>
 
-  <!-- HALLWAYS -->
-  <div class="room">
-    <div class="room-header">
-      <h2>Hallways & <em>Entrances</em></h2>
-      <span class="room-count">5 recommendations</span>
+  <!-- PAGE BODY -->
+  <div class="page-body">
+
+    <!-- BATHROOM -->
+    <div class="room">
+      <div class="room-header">
+        <h2>Bathroom <em>Modifications</em></h2>
+        <span class="room-count">5 recommendations</span>
+      </div>
+      <div class="mod-list">
+        <div class="mod-item">
+          <div class="mod-num">1</div>
+          <div class="mod-content">
+            <div class="mod-title">Install grab bars at the toilet and shower</div>
+            <div class="mod-desc">Mount securely into wall studs — not just drywall. Place one bar beside the toilet and at least one inside the shower or tub. These are the highest-impact modifications you can make and significantly reduce fall risk during the most vulnerable bathroom transitions.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">2</div>
+          <div class="mod-content">
+            <div class="mod-title">Non-slip mats inside and outside the tub or shower</div>
+            <div class="mod-desc">Place a textured non-slip mat on the floor of the tub or shower, and a second mat on the bathroom floor immediately outside. Wet feet on a smooth surface is one of the most common causes of bathroom falls.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">3</div>
+          <div class="mod-content">
+            <div class="mod-title">Shower chair or tub bench</div>
+            <div class="mod-desc">Allows bathing in a seated position, eliminating the need to stand for extended periods and reducing fall risk. Essential for patients with weakness, fatigue, or balance deficits. Ask your therapist which style — transfer bench, shower chair, or fold-down seat — is best for your setup.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">4</div>
+          <div class="mod-content">
+            <div class="mod-title">Handheld showerhead</div>
+            <div class="mod-desc">Enables bathing from a seated position and allows caregivers to assist more easily. Adjustable-height wall brackets add additional flexibility. An inexpensive and highly effective modification.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">5</div>
+          <div class="mod-content">
+            <div class="mod-title">Raised toilet seat</div>
+            <div class="mod-desc">Reduces the depth of sit-to-stand, which is one of the most physically demanding transfers in daily life. Particularly helpful for patients with hip or knee weakness following neurological injury. Models with armrests provide additional support.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mod-list">
 
-      <div class="mod-item">
-        <div class="mod-num">1</div>
-        <div class="mod-content">
-          <div class="mod-title">Improve lighting throughout all hallways</div>
-          <div class="mod-desc">Every hallway and transition area should be well lit. Add motion-sensor lights at the top and bottom of staircases and in hallways traveled at night. Poor lighting is a modifiable risk factor that is frequently overlooked.</div>
+    <!-- BEDROOM -->
+    <div class="room">
+      <div class="room-header">
+        <h2>Bedroom <em>Modifications</em></h2>
+        <span class="room-count">6 recommendations</span>
+      </div>
+      <div class="mod-list">
+        <div class="mod-item">
+          <div class="mod-num">1</div>
+          <div class="mod-content">
+            <div class="mod-title">Adjust bed height</div>
+            <div class="mod-desc">When seated at the edge of the bed, both feet should rest flat on the floor with hips and knees at roughly 90 degrees. A bed that is too low makes standing significantly harder; too high creates fall risk. Bed risers or a lower frame can adjust height as needed.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">2</div>
+          <div class="mod-content">
+            <div class="mod-title">Bed rail or half-rail</div>
+            <div class="mod-desc">Provides a stable handhold for repositioning in bed, rolling to the edge, and pushing up to sitting — all movements that become effortful after stroke or spinal cord injury. Half-rails attach to the bed frame and do not restrict full movement the way full side rails do.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">3</div>
+          <div class="mod-content">
+            <div class="mod-title">Remove or secure all loose rugs</div>
+            <div class="mod-desc">Loose rugs are one of the leading causes of falls at home. Remove them entirely, or use double-sided non-slip tape and non-slip rug pads to secure all edges firmly to the floor. This applies to all rooms, not just the bedroom.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">4</div>
+          <div class="mod-content">
+            <div class="mod-title">Nightlight or motion-sensor lighting</div>
+            <div class="mod-desc">Nighttime bathroom trips in the dark significantly increase fall risk — especially with impaired balance or sensation. Place nightlights or motion-activated lights along the path from the bed to the bathroom. This simple change has a meaningful impact on nighttime safety.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">5</div>
+          <div class="mod-content">
+            <div class="mod-title">Keep essentials within reach of the bed</div>
+            <div class="mod-desc">Phone, medications, water, and a call device should all be accessible without requiring the patient to stand or reach. A bedside caddy or small table at the right height prevents unnecessary and risky nighttime movements.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">6</div>
+          <div class="mod-content">
+            <div class="mod-title">Clear an unobstructed path to the bathroom</div>
+            <div class="mod-desc">Remove furniture, cords, clothing, and any other objects from the path between the bed and bathroom. If a mobility aid such as a walker or wheelchair is used, ensure there is adequate space to navigate the route safely, especially in the dark.</div>
+          </div>
         </div>
       </div>
-
-      <div class="mod-item">
-        <div class="mod-num">2</div>
-        <div class="mod-content">
-          <div class="mod-title">Install a ramp at any door with a step</div>
-          <div class="mod-desc">Even a single step is a significant barrier for patients using walkers, wheelchairs, or with foot drop. A ramp with a 1:12 slope ratio — one inch of rise for every 12 inches of length — is the standard for safe, manageable access. Portable ramps are available for rentals or temporary use.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">3</div>
-        <div class="mod-content">
-          <div class="mod-title">Handrails on both sides of all staircases</div>
-          <div class="mod-desc">After stroke, patients often have significantly more strength on one side than the other. A single handrail only assists descent or ascent in one direction. Bilateral handrails allow patients to use their stronger side in either direction and provide critical support if balance is lost.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">4</div>
-        <div class="mod-content">
-          <div class="mod-title">Widen doorways if wheelchair access is needed</div>
-          <div class="mod-desc">Standard doorways are often 28–30 inches — too narrow for most wheelchairs, which require at least 32 inches and ideally 36 inches of clear width. Offset hinges can add 2 inches of clearance without structural work. Full widening may require a contractor but is often covered under disability modification programs.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">5</div>
-        <div class="mod-content">
-          <div class="mod-title">Replace round door knobs with lever handles</div>
-          <div class="mod-desc">Lever-style door handles require significantly less grip strength and fine motor control than round knobs — an important consideration for patients with hand weakness or spasticity following stroke or cervical spinal cord injury. This is a low-cost, high-impact change.</div>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <!-- KITCHEN -->
-  <div class="room">
-    <div class="room-header">
-      <h2>Kitchen <em>Modifications</em></h2>
-      <span class="room-count">4 recommendations</span>
+    <!-- HALLWAYS & ENTRANCES -->
+    <div class="room">
+      <div class="room-header">
+        <h2>Hallways &amp; <em>Entrances</em></h2>
+        <span class="room-count">5 recommendations</span>
+      </div>
+      <div class="mod-list">
+        <div class="mod-item">
+          <div class="mod-num">1</div>
+          <div class="mod-content">
+            <div class="mod-title">Improve lighting throughout all hallways</div>
+            <div class="mod-desc">Every hallway and transition area should be well lit. Add motion-sensor lights at the top and bottom of staircases and in hallways traveled at night. Poor lighting is a modifiable risk factor that is frequently overlooked.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">2</div>
+          <div class="mod-content">
+            <div class="mod-title">Install a ramp at any door with a step</div>
+            <div class="mod-desc">Even a single step is a significant barrier for patients using walkers, wheelchairs, or with foot drop. A ramp with a 1:12 slope ratio — one inch of rise for every 12 inches of length — is the standard for safe, manageable access. Portable ramps are available for rentals or temporary use.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">3</div>
+          <div class="mod-content">
+            <div class="mod-title">Handrails on both sides of all staircases</div>
+            <div class="mod-desc">After stroke, patients often have significantly more strength on one side than the other. A single handrail only assists descent or ascent in one direction. Bilateral handrails allow patients to use their stronger side in either direction and provide critical support if balance is lost.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">4</div>
+          <div class="mod-content">
+            <div class="mod-title">Widen doorways if wheelchair access is needed</div>
+            <div class="mod-desc">Standard doorways are often 28–30 inches — too narrow for most wheelchairs, which require at least 32 inches and ideally 36 inches of clear width. Offset hinges can add 2 inches of clearance without structural work. Full widening may require a contractor but is often covered under disability modification programs.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">5</div>
+          <div class="mod-content">
+            <div class="mod-title">Replace round door knobs with lever handles</div>
+            <div class="mod-desc">Lever-style door handles require significantly less grip strength and fine motor control than round knobs — an important consideration for patients with hand weakness or spasticity following stroke or cervical spinal cord injury. This is a low-cost, high-impact change.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mod-list">
 
-      <div class="mod-item">
-        <div class="mod-num">1</div>
-        <div class="mod-content">
-          <div class="mod-title">Store frequently used items at counter height</div>
-          <div class="mod-desc">Reaching overhead while standing is one of the more destabilizing movements in daily life, particularly for patients with balance impairments. Reorganize so that everyday dishes, glasses, food, and appliances are stored between waist and shoulder height — no reaching up or bending low required.</div>
+    <!-- KITCHEN -->
+    <div class="room">
+      <div class="room-header">
+        <h2>Kitchen <em>Modifications</em></h2>
+        <span class="room-count">4 recommendations</span>
+      </div>
+      <div class="mod-list">
+        <div class="mod-item">
+          <div class="mod-num">1</div>
+          <div class="mod-content">
+            <div class="mod-title">Store frequently used items at counter height</div>
+            <div class="mod-desc">Reaching overhead while standing is one of the more destabilizing movements in daily life, particularly for patients with balance impairments. Reorganize so that everyday dishes, glasses, food, and appliances are stored between waist and shoulder height — no reaching up or bending low required.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">2</div>
+          <div class="mod-content">
+            <div class="mod-title">Add pull-out shelves or a lazy Susan to lower cabinets</div>
+            <div class="mod-desc">Deep lower cabinets require awkward bending and reaching that challenges balance. Pull-out shelves bring items to the front; a lazy Susan allows rotation so nothing is stored out of easy reach. Both are inexpensive modifications available at most hardware stores.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">3</div>
+          <div class="mod-content">
+            <div class="mod-title">Replace faucets and cabinet hardware with lever styles</div>
+            <div class="mod-desc">Lever-style faucets require only a downward push rather than a grip-and-twist motion. Loop or D-ring cabinet pulls are easier than standard knobs for patients with limited hand strength or coordination. These changes are particularly helpful for patients with hemiplegia or cervical SCI.</div>
+          </div>
+        </div>
+        <div class="mod-item">
+          <div class="mod-num">4</div>
+          <div class="mod-content">
+            <div class="mod-title">Place a non-slip mat in front of the sink</div>
+            <div class="mod-desc">Standing at the sink for tasks like washing dishes or brushing teeth can be fatiguing and destabilizing. A non-slip mat provides both traction underfoot and a tactile cue about position — helpful for patients with proprioceptive deficits following neurological injury.</div>
+          </div>
         </div>
       </div>
-
-      <div class="mod-item">
-        <div class="mod-num">2</div>
-        <div class="mod-content">
-          <div class="mod-title">Add pull-out shelves or a lazy Susan to lower cabinets</div>
-          <div class="mod-desc">Deep lower cabinets require awkward bending and reaching that challenges balance. Pull-out shelves bring items to the front; a lazy Susan allows rotation so nothing is stored out of easy reach. Both are inexpensive modifications available at most hardware stores.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">3</div>
-        <div class="mod-content">
-          <div class="mod-title">Replace faucets and cabinet hardware with lever styles</div>
-          <div class="mod-desc">Lever-style faucets require only a downward push rather than a grip-and-twist motion. Loop or D-ring cabinet pulls are easier than standard knobs for patients with limited hand strength or coordination. These changes are particularly helpful for patients with hemiplegia or cervical SCI.</div>
-        </div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-num">4</div>
-        <div class="mod-content">
-          <div class="mod-title">Place a non-slip mat in front of the sink</div>
-          <div class="mod-desc">Standing at the sink for tasks like washing dishes or brushing teeth can be fatiguing and destabilizing. A non-slip mat provides both traction underfoot and a tactile cue about position — helpful for patients with proprioceptive deficits following neurological injury.</div>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <!-- NOTE -->
-  <div class="note">
-    <p><strong>A note from STRIVE Physical Therapy —</strong> This guide covers the most common and impactful home modifications for stroke and spinal cord injury recovery. Every patient's home and functional level is different. Our therapists provide individualized home safety evaluations as part of our in-home PT services throughout the Las Vegas valley — including Skye Canyon, Centennial Hills, and Summerlin. <a href="https://www.striveptlv.com/#contact" style="color: var(--green); text-decoration: none; font-weight: 500;">Contact us</a> to learn more.</p>
-  </div>
+    <!-- NOTE -->
+    <div class="note">
+      <p><strong>A note from STRIVE Physical Therapy —</strong> This guide covers the most common and impactful home modifications for stroke and spinal cord injury recovery. Every patient's home and functional level is different. Our therapists provide individualized home safety evaluations as part of our in-home PT services throughout the Las Vegas valley — including Skye Canyon, Centennial Hills, and Summerlin. <a href="https://striveptlv.com/#contact">Contact us</a> to learn more.</p>
+    </div>
 
-</div><!-- /page-body -->
+  </div><!-- /page-body -->
 
-<div class="divider"></div>
-</body>
-</html>
 </main>
-<!-- ═══════════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════ -->
+
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
 
       <div class="footer-brand">
-        <a href="https://striveptlv.com/" class="nav-logo">
-          <img src="/logo.png" alt="STRIVE PT Logo" class="logo-img">
-          <div class="logo-text" style="color:white;">
-            STRIVE
+        <a href="https://striveptlv.com" class="nav-logo">
+          <img src="https://striveptlv.com/logo.png" alt="STRIVE PT Logo" class="logo-img">
+          <div>
+            <div class="logo-text">STRIVE</div>
             <div class="logo-sub">Physical Therapy · Las Vegas</div>
           </div>
         </a>
-        <p>Stroke &amp; balance physical therapy delivered 1-on-1 in your Las Vegas home. Coming to Las Vegas, certified care.</p>
+        <p>Stroke &amp; balance physical therapy delivered 1-on-1 in your Las Vegas home. Servicing Las Vegas in May 2026.</p>
       </div>
 
       <div class="footer-col">
@@ -905,7 +610,7 @@
         <a href="https://striveptlv.com/#pricing">Payment Options</a>
         <a href="https://striveptlv.com/#faq">FAQ</a>
         <a href="https://striveptlv.com/#contact">Medicare Waitlist</a>
-        <a href="https://striveptlv.com/moneymanagement/">Patient Resource</a>
+        <a href="https://striveptlv.com/moneymanagement/" target="_blank" rel="noopener">Patient Tools</a>
       </div>
 
       <div class="footer-col">
@@ -917,27 +622,22 @@
         <a href="https://striveptlv.com/#contact">Spring Valley</a>
       </div>
 
-    </div><!-- /footer-top -->
+    </div>
 
     <div class="footer-bottom">
       <span>&copy; 2026 STRIVE Physical Therapy &middot; Las Vegas, NV &middot; All rights reserved.</span>
       <span>Licensed Physical Therapists &middot; State of Nevada</span>
     </div>
-  </div><!-- /footer-inner -->
+  </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════
-     SCRIPTS
-═══════════════════════════════════════════════════════ -->
 <script>
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
   function togglePatientResource() {
-    const items = document.getElementById('patientResourceItems');
-    const arrow = document.querySelector('.mob-arrow');
-    items.classList.toggle('open');
-    arrow.classList.toggle('open');
+    document.getElementById('patientResourceItems').classList.toggle('open');
+    document.querySelector('.mob-arrow').classList.toggle('open');
   }
 </script>
 
